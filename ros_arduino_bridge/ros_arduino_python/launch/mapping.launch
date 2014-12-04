@@ -1,0 +1,41 @@
+<launch>
+  <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
+    <rosparam>
+      odom_frame: odom
+      map_update_interval: 0.1
+      maxUrange: 1.5 #0.7
+      maxRange: 1
+      sigma: 0
+      #srr: 0
+      #srt: 0
+      #str: 0
+      #stt: 0
+     # kernelSize: 1
+     # lstep: 0.005
+     # astep: 0.005
+      iterations: 0
+      lsigma: 0
+      ogain: 30.0
+      occ_thresh: 0.9
+     # lskip: 0
+      minimumScore: 100.0     #Tocar
+      linearUpdate: 0.05       #Tocar
+      angularUpdate: 0.025    #Tocar
+      temporalUpdate: -0.5  #?
+      resampleThreshold: 0.5
+      particles: 1000   #Estaba subido
+      xmin: -3.0    #Estaba a -1
+      ymin: -3.0    #Estaba a -1
+      xmax: 3.0     #Estaba a 1
+      ymax: 3.0     #Estaba a 1
+      delta: 0.02    #Estaba a 0.05
+      llsamplerange: 0.01
+      llsamplestep: 0.01
+      lasamplerange: 0.005
+      lasamplestep: 0.005
+      base_frame: base_link
+    </rosparam>
+    <remap from="scan" to="/arduino/sensor/multi_sonar"/>
+    #<remap from="/scan" to="/base_scan"/>
+  </node>
+</launch>
